@@ -15,8 +15,7 @@ public class Main {
      * icyHot(2, 120) → false
      */
     public boolean icyHot(int temp1, int temp2) {
-        // TODO: write method body
-        return false;
+        return ((temp1 < 0 && temp2 > 100) || (temp1 > 100 && temp2 < 0));
     }
 
     /**
@@ -27,8 +26,7 @@ public class Main {
      * in1020(8, 99) → false
      */
     public boolean in1020(int a, int b) {
-        // TODO: write method body
-        return false;
+        return ((a <= 20 && a >= 10) || (b <= 20 && b >= 10));
     }
 
     /**
@@ -40,8 +38,7 @@ public class Main {
      * hasTeen(20, 10, 13) → true
      */
     public boolean hasTeen(int a, int b, int c) {
-        // TODO: write method body
-        return false;
+        return ((a <= 19 && a >= 13) || (b <= 19 && b >= 13) || (c <= 19 && c >= 13));
     }
 
     // ======== Boolean expressions ========
@@ -55,8 +52,7 @@ public class Main {
      * sleepIn(false, true) → true
      */
     public boolean sleepIn(boolean weekday, boolean vacation) {
-        // TODO: write method body
-        return false;
+        return (!weekday || vacation);
     }
 
     /**
@@ -68,8 +64,7 @@ public class Main {
      * monkeyTrouble(true, false) → false
      */
     public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-        // TODO: write method body
-        return false;
+       return (aSmile == bSmile);
     }
 
     /**
@@ -81,8 +76,11 @@ public class Main {
      * posNeg(-4, -5, true) → true
      */
     public boolean posNeg(int a, int b, boolean negative) {
-        // TODO: write method body
-        return false;
+        if(negative)
+          return (a < 0 && b < 0);
+
+        return ((a < 0 && b > 0)||(a > 0 && b < 0));
+
     }
 
     // ======== Loops and Arrays ========
@@ -95,8 +93,15 @@ public class Main {
      * arrayCount9([1, 9, 9, 3, 9]) → 3
      */
     public int arrayCount9(int[] nums) {
-        // TODO: write method body
-        return 0;
+        int counter = 0;
+
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(nums[i] == 9)
+                counter++;
+        }
+
+        return counter;
     }
 
     /**
@@ -108,8 +113,15 @@ public class Main {
      * arrayFront9([1, 2, 3, 4, 5]) → false
      */
     public boolean arrayFront9(int[] nums) {
-        // TODO: write method body
+        int iterations = nums.length < 4? nums.length : 4;
+
+        for(int i = 0; i < iterations; i++) {
+            if (nums[i] == 9)
+                return true;
+        }
+
         return false;
+
     }
 
     /**
@@ -120,7 +132,22 @@ public class Main {
      * array123([1, 1, 2, 1, 2, 3]) → true
      */
     public boolean array123(int[] nums) {
-        // TODO: write method body
+
+        int val = 0;
+
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] == 1)
+            {
+                val = nums[i];
+                continue;
+            }
+
+            val = nums[i] == val + 1? nums[i] : 0;
+
+            if(nums[i] == 3)
+                return true;
+        }
+
         return false;
     }
 
@@ -134,8 +161,8 @@ public class Main {
      * helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
-        // TODO: write method body
-        return null;
+        return "Hello " + name + "!";
+
     }
 
     /**
@@ -147,8 +174,16 @@ public class Main {
      * lastTwo("ab") → "ba"
      */
     public String lastTwo(String str) {
-        // TODO: write method body
-        return null;
+        if(str.length() < 2)
+            return str;
+
+        char[] result = str.toCharArray();
+
+        char lastChar = result[result.length - 1];
+        result[result.length - 1] = result[result.length - 2];
+        result[result.length - 2] = lastChar;
+
+        return new String(result);
     }
 
     /**
@@ -159,8 +194,16 @@ public class Main {
      * middleTwo("Practice") → "ct"
      */
     public String middleTwo(String str) {
-        // TODO: write method body
-        return null;
+        if(str.length() == 2)
+            return str;
+
+        int middle = str.length() / 2;
+
+        //char[] ar = str.toCharArray();
+        //char[] result = {ar[middle - 1], ar[middle]};
+        //return new String(result);
+
+        return str.substring(middle - 1, middle + 1);
     }
 
 
